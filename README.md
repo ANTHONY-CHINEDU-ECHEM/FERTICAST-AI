@@ -3,7 +3,7 @@
 **Calibrated, explainable prediction of live birth before an IVF cycle begins**
 
 <p align="center">
-  <img src="docs/images/streamlit_app.png" alt="FertiCast AI clinician application" width="900">
+  <img width="1440" height="1250" alt="streamlit_app" src="https://github.com/user-attachments/assets/7fac94cd-710b-47a3-bfef-f22b078edd22" />
 </p>
 
 ## Project brief
@@ -44,7 +44,7 @@ On 20,064 cycles from the two most recent years, which the model never saw durin
   <tr><td>Theoretical ceiling of the simulator</td><td align="center">0.705</td><td align="center">0.449</td><td align="center">0.1797</td><td align="center">0.80</td></tr>
 </table>
 
-<p align="center"><img src="docs/images/roc_curves.png" alt="ROC curves" width="480"></p>
+<p align="center"><img width="896" height="832" alt="roc_curves" src="https://github.com/user-attachments/assets/05b8b22e-3eb5-4310-b3d9-981d69ca8d50" /></p>
 
 Two results in this table deserve an honest reading. First, a carefully specified logistic regression matches the boosted ensemble on discrimination. That is expected when the underlying process is close to additive, and it is reported here rather than hidden. The ensemble earns its place because it finds the age decline, the saturating AMH benefit and the BMI tails without anyone specifying them by hand, and because after recalibration it has the lowest calibration error of any candidate. Second, the lift over the age only baseline (0.671 to 0.697 in ROC AUC, 0.391 to 0.436 in PR AUC) looks modest as a summary statistic but is large for the individual, as the next finding shows.
 
@@ -52,7 +52,7 @@ Two results in this table deserve an honest reading. First, a carefully specifie
 
 Among women aged 18 to 34 in the hold out years, the model's estimates run from 25 percent at the tenth percentile to 49 percent at the ninetieth. For women aged 40 to 42 the same range is 5 percent to 16 percent. In both groups the couples at the top are roughly two to three times more likely to succeed than those at the bottom, yet an age band table would quote each group a single figure. This is the core business case: personalised estimates change the conversation for the patients who are furthest from their band average, in either direction.
 
-<p align="center"><img src="docs/images/age_band_calibration.png" alt="Observed and predicted live birth rate by age band" width="620"></p>
+<p align="center"><img width="1152" height="672" alt="age_band_calibration" src="https://github.com/user-attachments/assets/787b973d-5751-4b25-954c-5b3d212bd14c" /></p>
 
 The chart above confirms that the individual estimates still add up correctly. Within every age band the mean prediction is close to the observed live birth rate, including the oldest group where rates are very low and a small absolute error would be a large relative one.
 
@@ -60,15 +60,15 @@ The chart above confirms that the individual estimates still add up correctly. W
 
 Success rates in the register improve slowly over calendar time, as they have in real practice. A model trained on cycles up to 2019 therefore underestimates outcomes in later years. Before recalibration the ensemble's calibration error on the hold out years is 1.51 points; after a logistic recalibration fitted on 2020 and 2021 it falls to 0.71 points, which is as good as the simulator's own true probabilities achieve on a sample of this size. Recalibration is chosen automatically from three options (none, Platt scaling, isotonic regression) by cross validated Brier score. The practical lesson is that a clinic deploying a model like this needs a yearly recalibration step in its governance process, and the pipeline is built so that step is a single command.
 
-<p align="center"><img src="docs/images/calibration.png" alt="Calibration before and after recalibration" width="820"></p>
+<p align="center"><img width="1600" height="736" alt="calibration" src="https://github.com/user-attachments/assets/89cac780-146e-4bf8-b314-d5d8c21915cf" /></p>
 
 ### Female age dominates, but it is far from the whole story
 
 Grouped SHAP values show that female age accounts for 39 percent of the model's total attribution, AMH for 15 percent, and antral follicle count, previous live births, previous IVF cycles and BMI for 6 to 7 percent each. Semen quality, duration and cause of infertility and smoking make up most of the remainder. The dependence plots show the model has learned the clinically expected shapes without being told them: a gentle decline to age 35 followed by an accelerating fall, and an AMH benefit that flattens at higher values.
 
-<p align="center"><img src="docs/images/shap_global_importance.png" alt="Global importance by clinical concept" width="560"></p>
-<p align="center"><img src="docs/images/shap_dependence.png" alt="Learned effect of age and AMH" width="820"></p>
-<p align="center"><img src="docs/images/shap_beeswarm.png" alt="SHAP summary" width="640"></p>
+<p align="center"><img width="1184" height="768" alt="shap_global_importance" src="https://github.com/user-attachments/assets/ddd726e8-a337-4c11-8c6c-2e003642d311" /></p>
+<p align="center"><img width="1600" height="640" alt="shap_dependence" src="https://github.com/user-attachments/assets/02be8e43-8c42-4a5d-88f8-bb09568405e3" /></p>
+<p align="center"><img width="1280" height="896" alt="shap_beeswarm" src="https://github.com/user-attachments/assets/bf6cb840-9889-4980-93cc-3fe3cbbfcf1d" /></p>
 
 ### Explanations a patient can read
 
@@ -76,8 +76,8 @@ Standard SHAP waterfalls are drawn in log odds, which mean little in a consultat
 
 <table>
   <tr>
-    <td><img src="docs/images/waterfall_favourable.png" alt="Waterfall for a favourable profile" width="430"></td>
-    <td><img src="docs/images/waterfall_challenging.png" alt="Waterfall for a challenging profile" width="430"></td>
+    <td><img width="1312" height="1043" alt="waterfall_favourable" src="https://github.com/user-attachments/assets/fcb23064-6972-4dcb-aec7-54a25e2ae509" /></td>
+    <td><img width="1312" height="1043" alt="waterfall_challenging" src="https://github.com/user-attachments/assets/029e3a83-cfea-4b7a-b63c-a87616005cb3" /></td>
   </tr>
 </table>
 
@@ -89,7 +89,7 @@ The scenario tool makes a point that is easy to miss in aggregate statistics. Fo
 
 Decision curve analysis asks whether acting on the model leaves couples better off than a blanket policy. The calibrated ensemble beats a treat everyone policy at every threshold tested. Against a decision made on age alone it is indistinguishable at very low thresholds (5 to 10 percent) and pulls ahead from 15 percent upward, with the widest margin between 30 and 40 percent. In plain terms, the extra inputs matter most for couples whose decision is finely balanced, and add little when almost anyone would proceed.
 
-<p align="center"><img src="docs/images/decision_curve.png" alt="Decision curve analysis" width="560"></p>
+<p align="center"><img width="1056" height="672" alt="decision_curve" src="https://github.com/user-attachments/assets/145fa9e6-3e47-4ef4-bab2-8f57c3ff3cd1" /></p>
 
 ### Data quality work was as important as modelling
 
@@ -97,7 +97,7 @@ The raw register arrives the way real clinical extracts do. The cleaning stage r
 
 Missingness is driven by practice rather than chance. AMH is absent for more than half of cycles before 2015, when the assay was not routine, and semen parameters are absent for every donor sperm cycle because no partner sample exists. The imputer handles each case on its merits: AMH is predicted from age and FSH, FSH from age and AMH, donor cycles receive a screened donor reference profile rather than a population median dragged down by male factor patients, and every imputed field carries an indicator. An ablation in which XGBoost routes missing values natively scores the same on discrimination (0.698), so the domain imputer is not claimed to improve accuracy. Its value is that the logistic baseline, the scenario tool and the explanations all receive complete, clinically sensible records, and that the application can tell the clinician exactly which inputs were estimated.
 
-<p align="center"><img src="docs/images/missingness_by_year.png" alt="Assay missingness by treatment year" width="560"></p>
+<p align="center"><img width="1088" height="608" alt="missingness_by_year" src="https://github.com/user-attachments/assets/5aa025a5-958e-41a2-aa4e-efd8ce67f89b" /></p>
 
 ### Performance is consistent across patient groups
 
