@@ -1,0 +1,284 @@
+{
+  "generated_seconds": 67.3,
+  "rows": {
+    "train": 79857,
+    "calibration": 20079,
+    "test": 20064
+  },
+  "live_birth_rate": {
+    "train": 0.2649861627659441,
+    "calibration": 0.27675681059813734,
+    "test": 0.27681419457735246
+  },
+  "cleaning_audit": {
+    "duplicate_rows_removed": 600,
+    "amh_values_converted_from_pmol": 18180,
+    "cause_labels_normalised": 5263,
+    "out_of_range_bmi": 469,
+    "out_of_range_fsh_iu_l": 249,
+    "out_of_range_sperm_progressive_motility_pct": 225
+  },
+  "missing_rate_train": {
+    "female_age": 0.0,
+    "male_age": 0.0702,
+    "bmi": 0.0645,
+    "amh_ng_ml": 0.2581,
+    "fsh_iu_l": 0.1879,
+    "afc": 0.1509,
+    "infertility_duration_years": 0.0503,
+    "sperm_concentration_m_ml": 0.1073,
+    "sperm_progressive_motility_pct": 0.1092,
+    "previous_ivf_cycles": 0.0,
+    "previous_live_births": 0.0,
+    "infertility_cause": 0.0,
+    "sperm_source": 0.0,
+    "smoker": 0.0
+  },
+  "selection": {
+    "xgboost": {
+      "method": "platt",
+      "cv_brier": 0.18296020234350924,
+      "all_methods": {
+        "none": 0.18312492192363292,
+        "platt": 0.18296020234350924,
+        "isotonic": 0.18319465550088876
+      }
+    },
+    "lightgbm": {
+      "method": "platt",
+      "cv_brier": 0.1830060724523725,
+      "all_methods": {
+        "none": 0.18316472137553302,
+        "platt": 0.1830060724523725,
+        "isotonic": 0.18301780377577115
+      }
+    },
+    "ensemble": {
+      "method": "platt",
+      "cv_brier": 0.18295591620342425,
+      "all_methods": {
+        "none": 0.18311906307734244,
+        "platt": 0.18295591620342425,
+        "isotonic": 0.1829640351403981
+      }
+    }
+  },
+  "final_model": "ensemble",
+  "metrics": {
+    "FertiCast final": {
+      "roc_auc": 0.6973234904119121,
+      "pr_auc": 0.4361450443929036,
+      "brier": 0.18124822364584794,
+      "log_loss": 0.5374738548828739,
+      "ece": 0.007063830072881781,
+      "calibration_slope": 1.0534092775454698,
+      "calibration_intercept": 0.04790017778309542,
+      "roc_auc_ci": [
+        0.6889257595861191,
+        0.7052370337759905
+      ],
+      "brier_ci": [
+        0.17918640654943152,
+        0.18403219547564603
+      ]
+    },
+    "FertiCast uncalibrated": {
+      "roc_auc": 0.6973234904119121,
+      "pr_auc": 0.4361450443929036,
+      "brier": 0.18148542396094958,
+      "log_loss": 0.5379647368256896,
+      "ece": 0.01505197210640001,
+      "calibration_slope": 1.0627146166799295,
+      "calibration_intercept": 0.1266857922443932
+    },
+    "XGBoost": {
+      "roc_auc": 0.6971498987324998,
+      "pr_auc": 0.43604989185730414,
+      "brier": 0.1815100351998737,
+      "log_loss": 0.5380883416546058,
+      "ece": 0.014403909009259148,
+      "calibration_slope": 1.050117039971997,
+      "calibration_intercept": 0.11587163939957662
+    },
+    "LightGBM": {
+      "roc_auc": 0.6972441615147761,
+      "pr_auc": 0.4357522846284212,
+      "brier": 0.18150964000326558,
+      "log_loss": 0.5380048702270283,
+      "ece": 0.01479115471805499,
+      "calibration_slope": 1.0719239896797146,
+      "calibration_intercept": 0.13402669129593955
+    },
+    "Age only baseline": {
+      "roc_auc": 0.6706056158853355,
+      "pr_auc": 0.3913971030639719,
+      "brier": 0.18590560297280523,
+      "log_loss": 0.54850223813463,
+      "ece": 0.016002251199078322,
+      "calibration_slope": 1.108927911653997,
+      "calibration_intercept": 0.1664804129936893
+    },
+    "Logistic regression": {
+      "roc_auc": 0.698157939081661,
+      "pr_auc": 0.43781008120712245,
+      "brier": 0.18127292917347435,
+      "log_loss": 0.5374480745513178,
+      "ece": 0.013269333335926909,
+      "calibration_slope": 1.0433610118490697,
+      "calibration_intercept": 0.10430697422656081
+    },
+    "XGBoost native missing": {
+      "roc_auc": 0.6974820861626232,
+      "pr_auc": 0.43618194105704555,
+      "brier": 0.18142838349732898,
+      "log_loss": 0.5379090070868904,
+      "ece": 0.013490889558938285,
+      "calibration_slope": 1.0479814883749337,
+      "calibration_intercept": 0.1096301330407802
+    },
+    "Simulator ceiling": {
+      "roc_auc": 0.7052323444499677,
+      "pr_auc": 0.4487103403709274,
+      "brier": 0.17967137848983256,
+      "log_loss": 0.5335158221604439,
+      "ece": 0.007966856060606051,
+      "calibration_slope": 1.0425087913915712,
+      "calibration_intercept": 0.019627138010050428
+    }
+  },
+  "subgroups": [
+    {
+      "dimension": "age_band",
+      "level": "18 to 34",
+      "n": 9178,
+      "observed_rate": 0.3820004358247984,
+      "mean_predicted": 0.3690670276031172,
+      "roc_auc": 0.6087845478675684
+    },
+    {
+      "dimension": "age_band",
+      "level": "35 to 37",
+      "n": 5017,
+      "observed_rate": 0.2732708790113614,
+      "mean_predicted": 0.2820175501899372,
+      "roc_auc": 0.6075833032253005
+    },
+    {
+      "dimension": "age_band",
+      "level": "38 to 39",
+      "n": 2556,
+      "observed_rate": 0.1705790297339593,
+      "mean_predicted": 0.1861518203305395,
+      "roc_auc": 0.5998301454041891
+    },
+    {
+      "dimension": "age_band",
+      "level": "40 to 42",
+      "n": 2235,
+      "observed_rate": 0.09798657718120805,
+      "mean_predicted": 0.09915458317276102,
+      "roc_auc": 0.5851838261941001
+    },
+    {
+      "dimension": "age_band",
+      "level": "43 and over",
+      "n": 1078,
+      "observed_rate": 0.02040816326530612,
+      "mean_predicted": 0.03652712829154416,
+      "roc_auc": 0.6009814049586777
+    },
+    {
+      "dimension": "infertility_cause",
+      "level": "combined",
+      "n": 970,
+      "observed_rate": 0.22783505154639175,
+      "mean_predicted": 0.2308765322712964,
+      "roc_auc": 0.6858012795340998
+    },
+    {
+      "dimension": "infertility_cause",
+      "level": "diminished_reserve",
+      "n": 1667,
+      "observed_rate": 0.1349730053989202,
+      "mean_predicted": 0.13589980662931628,
+      "roc_auc": 0.7133425797503468
+    },
+    {
+      "dimension": "infertility_cause",
+      "level": "endometriosis",
+      "n": 1321,
+      "observed_rate": 0.267221801665405,
+      "mean_predicted": 0.2842198524059571,
+      "roc_auc": 0.6702057921475897
+    },
+    {
+      "dimension": "infertility_cause",
+      "level": "male_factor",
+      "n": 5361,
+      "observed_rate": 0.2740160417832494,
+      "mean_predicted": 0.26505000562520364,
+      "roc_auc": 0.6894644160194551
+    },
+    {
+      "dimension": "infertility_cause",
+      "level": "ovulatory_pcos",
+      "n": 2446,
+      "observed_rate": 0.36099754701553555,
+      "mean_predicted": 0.35900418424223907,
+      "roc_auc": 0.6717118472258753
+    },
+    {
+      "dimension": "infertility_cause",
+      "level": "tubal",
+      "n": 2324,
+      "observed_rate": 0.2891566265060241,
+      "mean_predicted": 0.2864547238332874,
+      "roc_auc": 0.6758672748760521
+    },
+    {
+      "dimension": "infertility_cause",
+      "level": "unexplained",
+      "n": 5975,
+      "observed_rate": 0.2897071129707113,
+      "mean_predicted": 0.29259285139988267,
+      "roc_auc": 0.6877909942932313
+    },
+    {
+      "dimension": "sperm_source",
+      "level": "donor",
+      "n": 1431,
+      "observed_rate": 0.30468204053109715,
+      "mean_predicted": 0.29764578357879024,
+      "roc_auc": 0.7117030104651699
+    },
+    {
+      "dimension": "sperm_source",
+      "level": "partner",
+      "n": 18633,
+      "observed_rate": 0.2746739655450008,
+      "mean_predicted": 0.27440771227377986,
+      "roc_auc": 0.6958993068792914
+    }
+  ],
+  "best_params": {
+    "xgboost": {
+      "max_depth": 3,
+      "learning_rate": 0.03,
+      "min_child_weight": 5,
+      "subsample": 0.7,
+      "colsample_bytree": 1.0,
+      "reg_lambda": 5.0,
+      "gamma": 0.5,
+      "n_estimators": 376
+    },
+    "lightgbm": {
+      "num_leaves": 7,
+      "learning_rate": 0.03,
+      "min_child_samples": 100,
+      "subsample": 0.7,
+      "colsample_bytree": 1.0,
+      "reg_lambda": 20.0,
+      "n_estimators": 262
+    }
+  }
+}

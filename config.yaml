@@ -1,0 +1,32 @@
+# FertiCast AI configuration. All paths are relative to the repository root.
+seed: 42
+
+data:
+  n_cycles: 120000
+  n_clinics: 64
+  year_min: 2012
+  year_max: 2023
+  raw_path: data/raw/ivf_cycles.csv
+  processed_dir: data/processed
+
+split:
+  # Temporal validation: the model never sees the future during development.
+  train_until_year: 2019
+  calibration_years: [2020, 2021]
+  test_years: [2022, 2023]
+
+training:
+  cv_folds: 3
+  search_iterations: 10
+  early_stopping_rounds: 40
+  max_boost_rounds: 600
+  search_sample_size: 40000
+
+evaluation:
+  bootstrap_rounds: 200
+  decision_thresholds: [0.05, 0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.40, 0.45]
+
+artifacts:
+  model_dir: models
+  report_dir: reports
+  figure_dir: docs/images
